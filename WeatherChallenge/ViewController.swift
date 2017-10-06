@@ -31,14 +31,6 @@ class ViewController: UIViewController {
     
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        //check to see if we have a search 
-        let lastSearch = UserDefaults.standard.string(forKey: "LastSearch")
-        searchField.text = lastSearch
-    }
-    
     @IBAction func searchButtonTapped(_ sender: Any) {
         guard let searchText = searchField.text else { return }
         
@@ -46,9 +38,6 @@ class ViewController: UIViewController {
             guard let strongSelf = self else { return }
             
             if viewModel != nil {
-                //set the last search
-                UserDefaults.standard.set(searchText, forKey: "LastSearch")
-                
                 let controller = strongSelf.storyboard?.instantiateViewController(withIdentifier: "weatherDetail") as? WeatherDetailViewController
                 controller?.viewModel = viewModel
                 strongSelf.present(controller!, animated: true, completion: nil)
@@ -61,6 +50,9 @@ class ViewController: UIViewController {
                 strongSelf.present(alert, animated: true, completion: nil)
             }
         }
+        
+        //set the last search
+        UserDefaults.standard.set(searchText, forKey: "LastSearch")
     }
 }
 
