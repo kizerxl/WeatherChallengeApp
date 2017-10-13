@@ -28,6 +28,8 @@ struct CurrentWeather {
     var day: String = ""
 }
 
+//we make an extension so we can just pass the weather json direct and create a model from it 
+//also did it to preserve the default member wise intializer structs automatically have
 extension CurrentWeather {
     init(with weatherJSON: Dictionary<String, AnyObject>) {
         

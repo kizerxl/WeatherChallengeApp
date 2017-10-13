@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         //see what our last search was and load it
         let lastSearch = UserDefaults.standard.string(forKey: "LastSearch")
         
+        //if we have a search we automatically load it up on launch
         if lastSearch != nil && lastSearch != "" {
             searchField.text = lastSearch
             searchButtonTapped(self)
@@ -31,10 +32,13 @@ class ViewController: UIViewController {
     
     }
     
+    //Search Button function when search is hit
+    //If search is not found an alert is displayed 
+    //otherwise a detail view is created using a viewModel from our API call
     @IBAction func searchButtonTapped(_ sender: Any) {
         guard let searchText = searchField.text else { return }
         
-        sharedInstance.getWeatherViewModelForLocation(location: searchText) { [weak self] viewModel in
+        sharedInstance.getWeatherViewModelForLocation(location: searchText.stringWithSpacesRemoved()) { [weak self] viewModel in
             guard let strongSelf = self else { return }
             
             if viewModel != nil {

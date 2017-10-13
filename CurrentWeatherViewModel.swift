@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Utilizing MVVM we use a ViewModel to encapsulate a CurrentWeather model
 struct CurrentWeatherViewModel {
     var currentWeather: String
     var currentWeatherDescription: String

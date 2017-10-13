@@ -19,6 +19,7 @@ class WeatherDetailViewController: UIViewController {
     @IBOutlet weak var highTempLbl: UILabel!
     @IBOutlet weak var lowTempLbl: UILabel!
     
+    //used for namespacing and accessing relevant image strings
     struct ImageStrings {
         static let baseURLString = "http://openweathermap.org/img/w/"
         static let imageExtension = ".png"
@@ -30,6 +31,7 @@ class WeatherDetailViewController: UIViewController {
         configureView()
     }
     
+    //we use this to set the view with our passed in viewModel
     func configureView() {
         dayLabel.text = viewModel?.day
         weatherDescripLabel.text = viewModel?.currentWeather
@@ -48,6 +50,7 @@ class WeatherDetailViewController: UIViewController {
         
     }
 
+    //dismisses detail view controller
     @IBAction func xTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

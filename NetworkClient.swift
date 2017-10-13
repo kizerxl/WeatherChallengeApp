@@ -23,6 +23,8 @@ struct NetworkClient {
     private init() {}
     
     //method call to get JSON for the current weather of the typed in string
+    //creates a CurrentWeatherViewModel via completion handler if api call is successful 
+    //otherwise nil
     func getWeatherViewModelForLocation(location locationString: String, completionHandler completion: @escaping weatherCompleted ) {
         let urlForecastString = NetworkClient.baseURLString+locationString+NetworkClient.app_IDString+NetworkClient.apiKeyString
         

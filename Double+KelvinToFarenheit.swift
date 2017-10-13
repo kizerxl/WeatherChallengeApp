@@ -9,7 +9,6 @@
 import Foundation
 
 extension Double {
-    
     func FarenheitTemp() -> Double {
         return (self * (9/5) - 459.67)
     }

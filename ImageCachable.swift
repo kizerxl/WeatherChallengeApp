@@ -15,6 +15,8 @@ let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImageView: ImageCachable {}
 
+//what this does it provide a clean way of loading up cached images (if we have them cached) otherwise 
+//loading images from the web then caching them
 extension ImageCachable where Self: UIImageView {
     typealias completion = (Bool) -> ()
     func getImageUsingCacheWithURLString(_ URLString: String, placeholder: UIImage?, completionHandler completion: @escaping completion) {
